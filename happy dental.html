@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NovaSmile — Dental Studio Futurista Clean</title>
+  <meta name="description" content="NovaSmile Dental Studio — Odontología estética y avanzada. Reserva cita en línea.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #eaf6ff;
+      --panel: #ffffff;
+      --accent: #38c8ff;
+      --accent-2: #6aa3ff;
+      --muted: #657b94;
+      --text: #042033;
+      --shadow: 0 20px 60px rgba(6,24,48,0.08);
+      --radius: 14px;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body {
+      height:100%;
+      margin:0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+      background: linear-gradient(180deg,var(--bg),#f3fbff);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    header {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      padding: 0 12px;
+    }
+
+    .nav {
+      width: min(1200px,96%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.9);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: rgba(56,200,255,0.1);
+      color: var(--accent);
+    }
+
+    nav a.cta {
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color: white;
+    }
+
+    main {
+      padding-top: 110px;
+    }
+
+    .wrap {
+      width: min(1200px,94%);
+      margin: 0 auto;
+    }
+
+    section.card {
+      background: var(--panel);
+      padding: 24px;
+      border-radius: var(--radius);
+      margin-top: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(6,24,48,0.04);
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 90px 18px;
+      background: linear-gradient(180deg,#fafdff00,#e9f6ff);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 420px;
+      height: 420px;
+      background: url("logodentista.jpg") center/contain no-repeat;
+      opacity: 0.07;
+      transform: translate(-50%, -50%);
+      filter: blur(1px);
+    }
+
+    .hero * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background: linear-gradient(90deg,#cfeeff,#def3ff);
+      color:#1b7ba3;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    h1 {
+      font-size:clamp(32px,5vw,48px);
+      margin:6px 0 12px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    p.lead {
+      color:var(--muted);
+      margin:0 auto 18px;
+      max-width:480px;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 14px;
+    }
+
+    .member {
+      background: linear-gradient(180deg,#fff,#f5fbff);
+      padding: 22px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(6,24,48,0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .member strong {
+      display: block;
+      text-align: center;
+    }
+
+    .field {position:relative;margin-bottom:12px;}
+
+    .field input,
+    .field textarea,
+    .field select {
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(6,24,48,0.06);
+      background:transparent;
+      color:var(--text);
+      outline:none;
+    }
+
+    .float-label {
+      position:absolute;
+      left:14px;
+      top:12px;
+      pointer-events:none;
+      color:var(--muted);
+      transform-origin:left top;
+      transition:all .18s ease;
+    }
+
+    .field input:focus + .float-label, 
+    .field input:not(:placeholder-shown) + .float-label,
+    .field select:focus + .float-label, 
+    .field select:not([value=""]) + .float-label {
+      transform:translateY(-20px) scale(.86);
+      color:var(--accent);
+    }
+
+    button {
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    iframe {
+      border-radius: 12px;
+      width: 100%;
+      height: 450px;
+    }
+
+    .carrusel-container{width:100%;overflow:hidden;border-radius:12px;margin-top:20px;position:relative}
+    .carrusel{display:flex;width:600%;transition: margin-left .6s ease;} /* ← ACTUALIZADO A 600% */
+    .carrusel img{width:100%;height:260px;object-fit:cover}
+
+    .btn-carrusel{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:#ffffffa6;
+      border:none;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      font-size:18px;
+      cursor:pointer;
+      font-weight:bold;
+      backdrop-filter:blur(4px);
+    }
+    #prev{left:10px;}
+    #next{right:10px;}
+
+    @media(max-width:520px){nav ul{display:none}}
+  </style>
+</head>
+<body>
+
+<header data-aos="fade-down">
+  <div class="nav">
+    <div class="brand">
+      <img src="logodentista.jpg" class="logo">
+      <div>
+        <div style="font-weight:800">Happy dental</div>
+        <div style="font-size:12px;color:var(--muted)">Dental Studio • bienestar al alcance de tu mano</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#mision">Misión</a></li>
+        <li><a href="#vision">Visión</a></li>
+        <li><a href="#valores">Valores</a></li>
+        <li><a href="#reserva" class="cta">Reservar</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="inicio" data-aos="fade-up">
+    <h1>HAPPY DENTAL</h1>
+    <p class="lead">NUTRICIÓN Y BIENESTAR AL ALCANCE DE TU SONRISA.</p>
+  </section>
+
+<center> <!-- EQUIPO --><center/>
+  <section class="card" id="equipo" data-aos="fade-up">
+    <h2>Equipo Profesional</h2>
+    <div class="team-list">
+
+      <div class="member" data-aos="zoom-in">
+        <img src="lyon.jpg">
+        <strong>Arturo González de Santiago</strong><br>
+        <small>Dentista General</small>
+      </div>
+
+      <div class="member" data-aos="zoom-in">
+        <img src="laloo.jpg">
+        <strong>Eduardo Pérez Martínez</strong><br>
+        <small>Dentista General</small>
+      </div>
+
+      <div class="member" data-aos="zoom-in">
+        <img src="eve.jpg">
+        <strong>Evelin Alejandra Ramírez León</strong><br>
+        <small>Dentista General</small>
+      </div>
+
+      <div class="member" data-aos="zoom-in">
+        <img src="moni.jpg">
+        <strong>Monica Leticia Garduño Sánchez</strong><br>
+        <small>Dentista General</small>
+      </div>
+
+      <div class="member" data-aos="zoom-in">
+        <img src="lalooo.jpg">
+        <strong>Jose Alberto Herrera</strong><br>
+        <small>Dentista General</small>
+      </div>
+
+      <div class="member" data-aos="zoom-in">
+        <img src="glasss.jpg">
+        <strong>Gladis Utrera Cortes</strong><br>
+        <small>Dentista General</small>
+      </div>
+
+    </div>
+  </section>
+
+  <center> <!-- MISIÓN --> </center>
+  <section class="card" id="mision" data-aos="fade-up">
+    <h2>Misión</h2>
+    <p>
+      Ser reconocidos como el centro líder en el cuidado de la salud integral, 
+      donde la excelencia en el bienestar bucal y la nutrición avanzada convergen 
+      para transformar positivamente la calidad de vida de nuestros pacientes, 
+      a un precio accesible.
+    </p>
+  </section>
+
+  <!-- VISIÓN -->
+  <section class="card" id="vision" data-aos="fade-up">
+    <h2>Visión</h2>
+    <p>
+      Convertirnos en un referente en atención odontológica y nutricional, accesible y de calidad, 
+      comprometidos con brindar servicios profesionales a personas de todos los niveles económicos, 
+      especialmente a quienes enfrentan mayores dificultades para acceder a la salud bucal.
+    </p>
+  </section>
+
+  <!-- VALORES --> 
+  <section class="card" id="valores" data-aos="fade-up">
+    <h2>Valores</h2>
+    <ul>
+      <li>Ética y Profesionalismo</li>
+      <li>Responsabilidad</li>
+      <li>Calidad</li>
+      <li>Compromiso</li>
+      <li>Honestidad</li>
+      <li>Empatía y Respeto</li>
+      <li>Accesibilidad</li>
+    </ul>
+  </section>
+
+  <center> <!-- FORMULARIO --> </center>
+  <section class="card" id="reserva" data-aos="fade-up">
+    <h2>Reserva rápida</h2>
+    <p>Elige el servicio y deja tus datos — te contactaremos por WhatsApp para confirmar tu cita.</p>
+
+    <form id="formReserva">
+      <div class="field">
+        <input id="nombre" placeholder=" " required>
+        <label class="float-label">Nombre completo</label>
+      </div>
+
+      <div class="field">
+        <input id="correo" type="email" placeholder=" ">
+        <label class="float-label">Correo electrónico</label>
+      </div>
+
+      <div class="field">
+        <select id="servicio" required>
+          <option value="">Selecciona servicio</option>
+          <option>Consultas de valoración y diagnóstico</option>
+          <option>Limpiezas dentales</option>
+          <option>Resinas y amalgamas</option>
+          <option>Extracciones sencillas</option>
+          <option>Prótesis Dentales</option>
+          <option>Endodoncia Básica</option>
+          <option>Ortodoncia preventiva</option>
+          <option>Implantes dentales</option>
+          <option>Blanqueamiento dental</option>
+          <option>Odontopediatría</option>
+          <option>Radiografías</option>
+          <option>Tratamiento de Encías</option>
+          <option>Coronas y prótesis</option>
+        </select>
+        <label class="float-label">Servicio</label>
+      </div>
+
+      <button type="submit">Reservar cita</button>
+    </form>
+  </section>
+
+<center>  <!-- UBICACIÓN --><center/>
+  <section class="card" id="ubicacion" data-aos="fade-up">
+      <h2>Ubicación</h2>
+      <p>Encuéntranos en LAPTOWN LINDAVISTA:</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d126.8637920945285!2d-99.12591689999999!3d19.500649199999998!2m2!1f354.37977551464763!2f45!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x85d1f9be5a1fc35d%3A0xc4cc8201b1018685!2sLAPTOWN%20LINDAVISTA!5e1!3m2!1ses-419!2smx!4v1762034698757!5m2!1ses-419!2smx" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+<section class="card" id="recorrido" data-aos="fade-up">
+<h2>Recorrido visual del consultorio</h2>
+
+<div class="carrusel-container">
+  <button id="prev" class="btn-carrusel">‹</button>
+  <button id="next" class="btn-carrusel">›</button>
+
+  <div class="carrusel" id="slider">
+    <img src="prueba.jpg">
+    <img src="prueba1.jpg">
+    <img src="prueba2.jpg">
+    <img src="prueba3.jpg">
+    <img src="plano.jpg">
+    <img src="plano1.jpg">
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:900,easing:'ease-in-out',once:true});
+
+let i = 0;
+const slider = document.getElementById("slider");
+const next = document.getElementById("next");
+const prev = document.getElementById("prev");
+
+next.onclick = ()=>{ i = (i<5 ? i+1 : 0); slider.style.marginLeft = `-${i*100}%`; };
+prev.onclick = ()=>{ i = (i>0 ? i-1 : 5); slider.style.marginLeft = `-${i*100}%`; };
+
+
+// 🔥 WhatsApp integrado
+document.getElementById("formReserva").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let nombre = document.getElementById("nombre").value;
+  let correo = document.getElementById("correo").value;
+  let servicio = document.getElementById("servicio").value;
+
+  let mensaje = `Hola, quiero reservar una cita.%0A
+*Nombre:* ${nombre}%0A
+*Correo:* ${correo}%0A
+*Servicio:* ${servicio}`;
+
+  window.open(`https://wa.me/527297382198?text=${mensaje}`, "_blank");
+});
+</script>
+
+</body>
+</html>
